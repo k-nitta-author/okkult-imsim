@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://doydcp0lb8bu0"]
+
+[ext_resource type="Script" path="res://src/HUD/hud.gd" id="1_k1fwo"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_k1fwo")
+
+[node name="position_label" type="Label" parent="."]
+offset_left = 31.0
+offset_top = 26.0
+offset_right = 236.0
+offset_bottom = 54.0
+text = "asdasd"

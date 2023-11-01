@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdjde366ttjd7"]
+
+[ext_resource type="Script" path="res://src/STAGES/stage.gd" id="1_4kbyp"]
+[ext_resource type="Script" path="res://src/STAGES/ACTOR.gd" id="2_2s582"]
+[ext_resource type="PackedScene" uid="uid://doydcp0lb8bu0" path="res://src/HUD/hud.tscn" id="3_iri0i"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p82bi"]
+height = 1.92116
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_dspqx"]
+
+[node name="STAGE" type="Node3D"]
+script = ExtResource("1_4kbyp")
+
+[node name="ACTOR" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.881763, 0)
+script = ExtResource("2_2s582")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ACTOR"]
+shape = SubResource("CapsuleShape3D_p82bi")
+
+[node name="Camera3D" type="Camera3D" parent="ACTOR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.881763, 0)
+current = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_dspqx")
+
+[node name="HUD" parent="." instance=ExtResource("3_iri0i")]
