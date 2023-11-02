@@ -23,6 +23,8 @@ shape = SubResource("CapsuleShape3D_p82bi")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.881763, 0)
 current = true
 
+[node name="RotationHelper" type="Node3D" parent="ACTOR"]
+
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]

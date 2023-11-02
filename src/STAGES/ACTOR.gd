@@ -7,6 +7,9 @@ signal weapon_selected(weapon, message)
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
+
+@onready var rotation_helper : Node3D = $RotationHelper
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -48,7 +51,7 @@ func _physics_process(delta):
 func _unhandled_input(event):
 
 	if event is InputEventMouseMotion:
-		pass
+		rotation_helper.rotate_x(deg_to_rad(event.relative.y))
 
 	if event is InputEventMouseButton and event.is_pressed():
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP: current_weapon_idx += 1
@@ -70,3 +73,23 @@ func log_motion():
 func log_weapon():
 	
 	return "selected weapon: %s at %s" % [weapons[current_weapon_idx], log_motion()]
+
+# use this to log when the player moves their mouse to trigger the camera movement.
+func log_mouse_movement():
+
+	return
+
+func get_chunk_position():
+	print("x: %d, z: %d" % [global_position.x, global_position.z])
+
+
+# this is called when the player presses the interact button.
+
+func interact(subject: String, object: String, interaction: String):
+	
+	print(log_interaction(subject, object, interaction))
+
+
+# 
+func log_interaction(subject_name: String, object_name: String,  interaction_name: String):
+	return "%s interacted (%s) with %s" % [subject_name, interaction_name, object_name] 
